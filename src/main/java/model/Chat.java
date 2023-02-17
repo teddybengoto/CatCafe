@@ -14,6 +14,8 @@ import javax.persistence.Id;
 @Entity
 public class Chat {
 	
+	//---------------------------------Attribut------------------------
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_cat")
@@ -34,8 +36,6 @@ public class Chat {
 	private boolean adoptable;
 	private String idPuce;
 	private String idTatouage;
-	
-	@Column(nullable=false)
 	private LocalDate naissance;
 	private boolean sterile;  
 	private String pbSante;         
@@ -47,6 +47,9 @@ public class Chat {
 	//private List<Garde> garde;
 
 	
+	
+	//---------------------------------Constructeur------------------------
+	
 	public Chat(String nom, Sexe sexe, Race race, LocalDate naissance,String commentaire) {
 		this.nom = nom;
 		this.sexe = sexe;
@@ -54,7 +57,6 @@ public class Chat {
 		this.naissance = naissance;
 		this.commentaire = commentaire;
 	}
-
 
 	public Chat(String nom, Sexe sexe, Race race, boolean adoptable, String idPuce, String idTatouage,
 			LocalDate naissance, boolean sterile, String pbSante,
@@ -72,10 +74,10 @@ public class Chat {
 		this.permanent = permanent;
 	}
 	
-    public Chat() {
-	}
+    public Chat() {}
 
-
+    //---------------------------------String------------------------
+    
 	public String toString() {
 		return "Chat [nom=" + nom + ", \nsexe=" + sexe + ", \nrace=" + race + ", \nadoptable=" + adoptable + ", \nid=" + id
 				+ ", \nidPuce=" + idPuce + ", \nidTatouage=" + idTatouage + ", \nnaissance=" + naissance + ", \nsterile="
@@ -83,7 +85,8 @@ public class Chat {
 				+ ", \ncommentaire=" + commentaire + ", \npermanent=" + permanent + "]";
 	}
 
-
+	//---------------------------------Getter Setter------------------------
+	
 	public String getNom() {
 		return this.nom;
 	}
@@ -124,11 +127,11 @@ public class Chat {
 		return this.id;
 	}
 
-	/*
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	*/
+	
 
 	public String getIdPuce() {
 		return this.idPuce;
@@ -202,7 +205,7 @@ public class Chat {
 		this.user = user;
 	}
 
-	/*
+	
 	public Adoption getAdoption() {
 		return this.adoption;
 	}
@@ -210,7 +213,8 @@ public class Chat {
 	public void setAdoption(Adoption adoption) {
 		this.adoption = adoption;
 	}
-
+	
+/*
 	public List<Garde> getGarde() {
 		return this.garde;
 	}
