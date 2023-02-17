@@ -3,14 +3,39 @@ package model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Chat {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_cat")
+	private Integer id;
+	
+	@Column(nullable=false)
 	private String nom;
+	
+	@Column(name="sexe",columnDefinition = "ENUM('male','femelle')",nullable=false)
+	@Enumerated(EnumType.STRING)
 	private Sexe sexe;
+	
+	@Column(name="race",columnDefinition = "ENUM('Europeen','Ragdoll','MainCoon','Persan',"
+			+ "'Sphynx','SacreDeBirmanie','BritishShorthair',"
+			+ "'Norvegien','Chartreux','Siamois','Abyssin','Bengal','Autre')",nullable=false)
+	@Enumerated(EnumType.STRING)
 	private Race race;
 	private boolean adoptable;
-	private Integer id;  
 	private String idPuce;
 	private String idTatouage;
+	
+	@Column(nullable=false)
 	private LocalDate naissance;
 	private boolean sterile;  
 	private String pbSante;         
@@ -18,7 +43,7 @@ public class Chat {
 	private boolean permanent;
 	
 	private Client user;
-	//private Adoption adoption;
+	private Adoption adoption;
 	//private List<Garde> garde;
 
 	
@@ -46,10 +71,12 @@ public class Chat {
 		this.commentaire = commentaire;
 		this.permanent = permanent;
 	}
-
 	
+    public Chat() {
+	}
 
-    public String toString() {
+
+	public String toString() {
 		return "Chat [nom=" + nom + ", \nsexe=" + sexe + ", \nrace=" + race + ", \nadoptable=" + adoptable + ", \nid=" + id
 				+ ", \nidPuce=" + idPuce + ", \nidTatouage=" + idTatouage + ", \nnaissance=" + naissance + ", \nsterile="
 				+ sterile + ", \npbSante=" + pbSante
