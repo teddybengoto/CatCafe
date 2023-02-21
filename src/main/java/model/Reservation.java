@@ -2,28 +2,62 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="reservation")
 public class Reservation {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_reservation")
+	private Integer id;
+	
     private int effectif ;
+    
+    @Column(nullable=false)
     private LocalDate jour;
+    
+    @Column(nullable=false)
     private LocalDate heure;
+    
+    @ManyToOne
+	@JoinColumn(name="client",nullable = false)
     private Client client;
+    
+    @Column(name="sexe",columnDefinition = "ENUM('Jeu', 'Coworking', 'Chill', 'SalonDeThe')",nullable=false)
+	@Enumerated(EnumType.STRING)
     private Espace espace;
 
 
+    public Reservation() {}
+    public Reservation(Integer id, int effectif, LocalDate jour, LocalDate heure, Client client, Espace espace) {
+		this.id = id;
+		this.effectif = effectif;
+		this.jour = jour;
+		this.heure = heure;
+		this.client = client;
+		this.espace = espace;
+	}
 
 
-    public Reservation(int effectif, LocalDate jour, LocalDate heure, Client client, Espace espace) {
-        this.effectif = effectif;
-        this.jour = jour;
-        this.heure = heure;
-        this.client = client;
-        this.espace = espace;
-    }
- 
 
-
-    public int getEffectif() {
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public int getEffectif() {
         return this.effectif;
     }
 
@@ -67,6 +101,12 @@ public class Reservation {
 
 	public void setEspace(Espace espace) {
 		this.espace = espace;
+	}
+	
+	@Override
+	public String toString() {
+		return "Reservation [id=" + id + ", effectif=" + effectif + ", jour=" + jour + ", heure=" + heure + ", client="
+				+ client + ", espace=" + espace + "]";
 	}
 
    
