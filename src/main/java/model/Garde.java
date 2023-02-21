@@ -2,14 +2,36 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="adoption")
 public class Garde {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_garde")
+	private Integer id;
 	
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 	private double Prix;
+	@ManyToOne
 	private Client client;
+	@ManyToOne
 	private Chat chat;
 	
+	//-----------------Constructor----------------
+	
+	public Garde() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Garde(LocalDate dateDebut, LocalDate dateFin, double prix, Client client, Chat chat) {
 		super();
