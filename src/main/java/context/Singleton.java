@@ -24,7 +24,7 @@ public class Singleton {
 	
 	private static Singleton instance;
 	
-	private EntityManagerFactory emf= Persistence.createEntityManagerFactory("demoJPA");
+	private EntityManagerFactory emf= Persistence.createEntityManagerFactory("catCafeUnit");
 	
 	
 	private Singleton() {}

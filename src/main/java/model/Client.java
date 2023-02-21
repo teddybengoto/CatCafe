@@ -18,14 +18,14 @@ public class Client extends Compte {
 	@OneToMany(mappedBy = "client")
 	private List <Chat> chat;
 
-	@OneToMany(mappedBy = "adpotion")
+	@OneToMany(mappedBy = "client")
 	private List <Adoption> adoption;
 	
-	@OneToMany(mappedBy = "garde")
+	@OneToMany(mappedBy = "client")
 	private List <Garde> garde;
 
 		
-	@OneToMany(mappedBy = "reservation")
+	@OneToMany(mappedBy = "client")
 	private List <Reservation> reservation;
 	
 

@@ -21,6 +21,8 @@ public class Adresse {
 		this.ville = ville;
 		this.cp = cp;
 	}
+	
+	public Adresse() {}
 
 	public String getNumero() {
 		return numero;
