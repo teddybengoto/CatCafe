@@ -12,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-//test debug
+
 @Entity
 public class Chat {
 	
@@ -50,11 +50,11 @@ public class Chat {
 	//@OneToOne(mappedBy = "terme dans adoption")
 	private Adoption adoption;
 	
-	
-	//private List<Garde> garde;
+	//@OneToMany
+	private List<Garde> garde;
 
 	
-	//testdebug
+	
 	//---------------------------------Constructeur------------------------
 	
 	public Chat(String nom, Sexe sexe, Race race, LocalDate naissance,String commentaire) {
