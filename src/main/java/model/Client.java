@@ -15,7 +15,7 @@ public class Client extends Compte {
 	private Adresse adresse;
 	private String telephone; 
 
-	@OneToMany(mappedBy = "chat")
+	@OneToMany(mappedBy = "client")
 	private List <Chat> chat;
 
 	@OneToMany(mappedBy = "adpotion")
