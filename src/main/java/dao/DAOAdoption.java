@@ -24,7 +24,6 @@ public class DAOAdoption implements IDAOAdoption{
 		List<Adoption> adoptions = em.createQuery("from Adoption").getResultList();
 		em.close();
 		return adoptions;
-		return null;
 	}
 
 	@Override

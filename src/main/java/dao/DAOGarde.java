@@ -25,7 +25,6 @@ public class DAOGarde implements IDAOGarde{
 		List<Garde> gardes = em.createQuery("from Garde").getResultList();
 		em.close();
 		return gardes;
-		return null;
 	}
 
 	@Override
