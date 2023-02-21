@@ -3,12 +3,39 @@ package model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+//test debug
+@Entity
 public class Chat {
+	
+	//---------------------------------Attribut------------------------
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_cat")
+	private Integer id;
+	
+	@Column(nullable=false)
 	private String nom;
+	
+	@Column(name="sexe",columnDefinition = "ENUM('male','femelle')",nullable=false)
+	@Enumerated(EnumType.STRING)
 	private Sexe sexe;
+	
+	@Column(name="race",columnDefinition = "ENUM('Europeen','Ragdoll','MainCoon','Persan',"
+			+ "'Sphynx','SacreDeBirmanie','BritishShorthair',"
+			+ "'Norvegien','Chartreux','Siamois','Abyssin','Bengal','Autre')",nullable=false)
+	@Enumerated(EnumType.STRING)
 	private Race race;
 	private boolean adoptable;
-	private Integer id;  
 	private String idPuce;
 	private String idTatouage;
 	private LocalDate naissance;
@@ -17,10 +44,18 @@ public class Chat {
 	private String commentaire;
 	private boolean permanent;
 	
+	//@OneToOne(mappedBy = "terme dans user")
 	private Client user;
-	//private Adoption adoption;
+	
+	//@OneToOne(mappedBy = "terme dans adoption")
+	private Adoption adoption;
+	
+	
 	//private List<Garde> garde;
 
+	
+	//testdebug
+	//---------------------------------Constructeur------------------------
 	
 	public Chat(String nom, Sexe sexe, Race race, LocalDate naissance,String commentaire) {
 		this.nom = nom;
@@ -29,7 +64,6 @@ public class Chat {
 		this.naissance = naissance;
 		this.commentaire = commentaire;
 	}
-
 
 	public Chat(String nom, Sexe sexe, Race race, boolean adoptable, String idPuce, String idTatouage,
 			LocalDate naissance, boolean sterile, String pbSante,
@@ -46,17 +80,20 @@ public class Chat {
 		this.commentaire = commentaire;
 		this.permanent = permanent;
 	}
-
 	
+    public Chat() {}
 
-    public String toString() {
+    //---------------------------------String------------------------
+    
+	public String toString() {
 		return "Chat [nom=" + nom + ", \nsexe=" + sexe + ", \nrace=" + race + ", \nadoptable=" + adoptable + ", \nid=" + id
 				+ ", \nidPuce=" + idPuce + ", \nidTatouage=" + idTatouage + ", \nnaissance=" + naissance + ", \nsterile="
 				+ sterile + ", \npbSante=" + pbSante
 				+ ", \ncommentaire=" + commentaire + ", \npermanent=" + permanent + "]";
 	}
 
-
+	//---------------------------------Getter Setter------------------------
+	
 	public String getNom() {
 		return this.nom;
 	}
@@ -97,11 +134,11 @@ public class Chat {
 		return this.id;
 	}
 
-	/*
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	*/
+	
 
 	public String getIdPuce() {
 		return this.idPuce;
@@ -175,7 +212,7 @@ public class Chat {
 		this.user = user;
 	}
 
-	/*
+	
 	public Adoption getAdoption() {
 		return this.adoption;
 	}
@@ -183,7 +220,8 @@ public class Chat {
 	public void setAdoption(Adoption adoption) {
 		this.adoption = adoption;
 	}
-
+	
+/*
 	public List<Garde> getGarde() {
 		return this.garde;
 	}
