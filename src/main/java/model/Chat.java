@@ -44,13 +44,13 @@ public class Chat {
 	private String commentaire;
 	private boolean permanent;
 	
-	//@OneToOne(mappedBy = "terme dans user")
+	@OneToOne(mappedBy = "chat")
 	private Client user;
 	
-	//@OneToOne(mappedBy = "terme dans adoption")
+	@OneToOne(mappedBy = "chat")
 	private Adoption adoption;
 	
-	//@OneToMany
+	@OneToMany
 	private List<Garde> garde;
 
 	
