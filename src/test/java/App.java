@@ -81,7 +81,7 @@ public class App {
 		String login = saisieString("Entrez votre login : ");
 		String password = saisieString("Entrez votre mot de passe : ");
 
-		Client c = new Client(login, password, nom, prenom, null, 0);
+		Client c = new Client(login, password, nom, prenom, null, "0");
 
 		// Enregistre le clien dans la data base
 
