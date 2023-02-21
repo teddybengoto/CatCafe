@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -45,8 +46,8 @@ public class Chat {
 	private String commentaire;
 	private boolean permanent;
 	
-	@OneToOne(mappedBy = "chat")
-	private Client user;
+	@ManyToOne
+	private Client client;
 	
 	@OneToOne(mappedBy = "chat")
 	private Adoption adoption;
