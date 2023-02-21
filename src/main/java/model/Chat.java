@@ -206,12 +206,12 @@ public class Chat {
 		this.permanent = permanent;
 	}
 
-	public Client getUser() {
-		return this.user;
+	public Client getClient() {
+		return this.client;
 	}
 
-	public void setUser(Client user) {
-		this.user = user;
+	public void setClient(Client user) {
+		this.client = user;
 	}
 
 	
