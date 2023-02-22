@@ -6,13 +6,13 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Adresse {
 	
-	@Column(length = 10, nullable = false)
+	@Column(length = 10)
 	private String numero;
-	@Column(length=40,nullable = false)
+	@Column(length=40)
 	private String voie;
-	@Column(length=50,nullable = false)
+	@Column(length=50)
 	private String ville;
-	@Column(length=15,nullable = false)
+	@Column(length=15)
 	private String cp;
 
 	public Adresse(String numero, String voie, String ville, String cp) {
