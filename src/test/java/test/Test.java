@@ -58,10 +58,10 @@ public class Test {
 		em.persist(g1);
 		em.persist(ad1);
 		
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
 		
-		em.close();
-		emf.close();
+		//em.close();
+		//emf.close();
 		
 		System.out.println(admin1);
 		System.out.println(c1);
