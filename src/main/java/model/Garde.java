@@ -21,7 +21,7 @@ public class Garde {
 	
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
-	private double Prix;
+	private double prix;
 	@ManyToOne
 	private Client client;
 	@ManyToOne
@@ -34,10 +34,9 @@ public class Garde {
 	}
 	
 	public Garde(LocalDate dateDebut, LocalDate dateFin, double prix, Client client, Chat chat) {
-		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		Prix = prix;
+		this.prix = prix;
 		this.client = client;
 		this.chat = chat;
 	}
@@ -55,10 +54,10 @@ public class Garde {
 		this.dateFin = dateFin;
 	}
 	public double getPrix() {
-		return Prix;
+		return prix;
 	}
 	public void setPrix(double prix) {
-		Prix = prix;
+		this.prix = prix;
 	}
 	public Client getClient() {
 		return client;
@@ -75,7 +74,7 @@ public class Garde {
 
 	@Override
 	public String toString() {
-		return "Garde [dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", Prix=" + Prix + ", client=" + client
+		return "Garde [dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", Prix=" + prix + ", client=" + client
 				+ ", chat=" + chat + "]";
 	}
 	

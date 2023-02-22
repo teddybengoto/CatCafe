@@ -26,7 +26,7 @@ public class Adoption {
 	private LocalDate date;
 	@Column(name="prix_adoption")
 	private double prix;
-	private String Condition;
+	private String condition;
 	@ManyToOne
 	private Client client;
 	@OneToOne
@@ -43,7 +43,7 @@ public class Adoption {
 	public Adoption(LocalDate date, double prix, String condition,Client client, Chat chat) {
 		this.date = date;
 		this.prix = prix;
-		Condition = condition;
+		this.condition = condition;
 		this.client = client;
 		this.chat = chat;
 	}
@@ -66,11 +66,11 @@ public class Adoption {
 	}
 
 	public String getCondition() {
-		return Condition;
+		return condition;
 	}
 
 	public void setCondition(String condition) {
-		Condition = condition;
+		this.condition = condition;
 	}
     
 
@@ -93,7 +93,7 @@ public class Adoption {
 
 	@Override
 	public String toString() {
-		return "Adoption [id=" + id + ", date=" + date + ", prix=" + prix + ", Condition=" + Condition + ", client="
+		return "Adoption [id=" + id + ", date=" + date + ", prix=" + prix + ", Condition=" + condition + ", client="
 				+ client + ", chat=" + chat + "]";
 	}
 	

@@ -40,8 +40,7 @@ public class Reservation {
 
 
     public Reservation() {}
-    public Reservation(Integer id, int effectif, LocalDate jour, LocalDate heure, Client client, Espace espace) {
-		this.id = id;
+    public Reservation(int effectif, LocalDate jour, LocalDate heure, Client client, Espace espace) {
 		this.effectif = effectif;
 		this.jour = jour;
 		this.heure = heure;
