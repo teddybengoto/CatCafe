@@ -89,6 +89,15 @@ public class Adoption {
 	public void setChat(Chat chat) {
 		this.chat = chat;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Adoption [id=" + id + ", date=" + date + ", prix=" + prix + ", Condition=" + Condition + ", client="
+				+ client + ", chat=" + chat + "]";
+	}
+	
+	
 	
 
 	
