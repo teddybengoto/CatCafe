@@ -3,9 +3,25 @@ package test;
 
 import java.util.Scanner;
 
+import context.Singleton;
+import dao.IDAOAdoption;
+import dao.IDAOChat;
+import dao.IDAOCompte;
+import dao.IDAOGarde;
+import dao.IDAOReservation;
 import model.Client;
+import model.Compte;
+
 
 public class App {
+	
+	static Compte connected;
+
+	static IDAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
+	static IDAOAdoption daoAdoption= Singleton.getInstance().getDaoAdoption();
+	static IDAOChat daoChat = Singleton.getInstance().getDaoChat();
+	static IDAOGarde daoGarde = Singleton.getInstance().getDaoGarde();
+	static IDAOReservation daoReservation = Singleton.getInstance().getDaoReservation();
 
 	public static String saisieString(String msg) {
 		Scanner monScanner = new Scanner(System.in);
@@ -45,14 +61,9 @@ public class App {
 
 		int choix = saisieInt("Choisir un menu :");
 		switch (choix) {
-			case 1:
-				connection();
-				break;
-			case 2:
-				inscription();
-				break;
-			case 3:
-				System.exit(0);
+			case 1:connection();break;
+			case 2:inscription();break;
+			case 3: Singleton.getInstance().getEmf().close();System.exit(0);
 		}
 
 		menuPrincipal();
