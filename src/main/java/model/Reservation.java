@@ -31,10 +31,10 @@ public class Reservation {
     private LocalDate heure;
     
     @ManyToOne
-	@JoinColumn(name="client",nullable = false)
+	@JoinColumn(name="id_client",nullable = false)
     private Client client;
     
-    @Column(name="sexe",columnDefinition = "ENUM('Jeu', 'Coworking', 'Chill', 'SalonDeThe')",nullable=false)
+    @Column(name="espace",columnDefinition = "ENUM('Jeu', 'Coworking', 'Chill', 'SalonDeThe')",nullable=false)
 	@Enumerated(EnumType.STRING)
     private Espace espace;
 
