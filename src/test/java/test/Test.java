@@ -12,7 +12,6 @@ import model.Adresse;
 import model.Chat;
 import model.Client;
 import model.Race;
-import model.Reservation;
 import model.Sexe;
 
 public class Test {
