@@ -11,29 +11,29 @@ import model.Adresse;
 import model.Chat;
 import model.Client;
 import model.Race;
+import model.Reservation;
 import model.Sexe;
 
 public class Test {
 
 	public static void main(String[] args) {
-		
-		
+
+		Adresse a1 = new Adresse("12", "rue", "ville", "cp");
+		Client c1 = new Client("login", "password", "nom", "prenom", a1, "tel");
+		Reservation r = new Reservation();
+		Chat mousse = new Chat("mousse", Sexe.male, Race.Europeen, LocalDate.now(), "com");
+
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("catCafeUnit");
 		EntityManager em = emf.createEntityManager();
-		
-		//Adresse a1 = new Adresse("12","rue","ville","cp");
-		//Client c1 = new Client("login","password","nom","prenom",a1,"tel");
-		
-		//Chat mousse = new Chat("mousse",Sexe.male,Race.Europeen,LocalDate.now(),"com");
-			
-		//Singleton.getInstance().getDaoChat().save(mousse);
-		
-		//em.getTransaction().begin();
-		
-		//em.persist(mousse);
-		
-		//em.getTransaction().commit();
-		
+
+		// Singleton.getInstance().getDaoChat().save(mousse);
+
+		em.getTransaction().begin();
+
+		em.persist(r);
+
+		em.getTransaction().commit();
+
 		em.close();
 		emf.close();
 	}
