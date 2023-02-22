@@ -22,10 +22,9 @@ public class Singleton {
 	private IDAOGarde daoGarde = new DAOGarde();
 	private IDAOReservation daoReservation = new DAOReservation();
 	
-	private static Singleton instance;
 	
 	private EntityManagerFactory emf= Persistence.createEntityManagerFactory("catCafeUnit");
-	
+	private static Singleton instance;
 	
 	private Singleton() {}
 
