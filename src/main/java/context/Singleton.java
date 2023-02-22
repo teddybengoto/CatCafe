@@ -21,10 +21,10 @@ public class Singleton {
 	private IDAOCompte daoCompte = new DAOCompte();
 	private IDAOGarde daoGarde = new DAOGarde();
 	private IDAOReservation daoReservation = new DAOReservation();
-	
+	private static Singleton instance;
 	
 	private EntityManagerFactory emf= Persistence.createEntityManagerFactory("catCafeUnit");
-	private static Singleton instance;
+	
 	
 	private Singleton() {}
 
@@ -36,6 +36,11 @@ public class Singleton {
 		}
 		return instance;
 	}
+	
+	public static void setInstance(Singleton instance) {
+		Singleton.instance = instance;
+	}
+
 
 
 	public IDAOAdoption getDaoAdoption() {
