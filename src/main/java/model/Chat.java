@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -22,7 +23,7 @@ public class Chat {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_cat")
+	@Column(name="id_chat")
 	private Integer id;
 	
 	@Column(nullable=false)
@@ -47,6 +48,7 @@ public class Chat {
 	private boolean permanent;
 	
 	@ManyToOne
+	@JoinColumn(name="id_client")
 	private Client client;
 	
 	@OneToOne(mappedBy = "chat")
