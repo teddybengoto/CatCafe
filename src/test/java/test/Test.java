@@ -27,23 +27,23 @@ public class Test {
 		
 		Adoption ad1 = new Adoption(LocalDate.now(),100,"",c1,mousse); 
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("catCafeUnit");
-		EntityManager em = emf.createEntityManager();
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("catCafeUnit");
+		//EntityManager em = emf.createEntityManager();
 		
 		
 			
-		//Singleton.getInstance().getDaoChat().save(mousse);
+		Singleton.getInstance().getDaoChat().save(mousse);
 		
-		em.getTransaction().begin();
+		//em.getTransaction().begin();
 		
-		em.persist(mousse);
-		em.persist(c1);
+		//em.persist(mousse);
+		//em.persist(c1);
 		//em.persist(ad1);
 		
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
 		
-		em.close();
-		emf.close();
+		//em.close();
+		//emf.close();
 		
 		System.out.println(mousse);
 		System.out.println(c1);
