@@ -70,6 +70,13 @@ public abstract class Compte {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Compte [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
+				+ prenom + "]";
+	}
 	
 	
 	
