@@ -26,6 +26,7 @@ public class Adoption {
 	private LocalDate date;
 	@Column(name="prix_adoption")
 	private double prix;
+	@Column(name="condition_adoption")
 	private String condition;
 	@ManyToOne
 	private Client client;
