@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="adoption")
+@Table(name="garde")
 public class Garde {
 	
 	@Id

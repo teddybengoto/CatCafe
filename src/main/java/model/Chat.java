@@ -52,7 +52,7 @@ public class Chat {
 	@OneToOne(mappedBy = "chat")
 	private Adoption adoption;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "chat")
 	private List<Garde> garde;
 
 	
