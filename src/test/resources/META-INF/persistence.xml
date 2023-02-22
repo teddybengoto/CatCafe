@@ -14,7 +14,7 @@
 				value="com.mysql.jdbc.Driver" />
 				
 			<property name="hibernate.connection.url"
-				value="jdbc:mysql://localhost:3306/catCafe" />
+				value="jdbc:mysql://localhost:3306/catcafe" />
 				
 			<property name="hibernate.connection.user" value="root" />
 			
