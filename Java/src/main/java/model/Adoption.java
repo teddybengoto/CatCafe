@@ -25,15 +25,15 @@ public class Adoption {
 	private Integer id;
 	@Column(name="date_adoption")
 	private LocalDate date;
-	@Column(name="prix_adoption")
+	@Column(name="prix_adoption", nullable = false, columnDefinition = "DECIMAL(5,2)")
 	private double prix;
 	@Column(name="condition_adoption")
 	private String condition;
 	@ManyToOne
-	@JoinColumn(name="id_client")
+	@JoinColumn(name="id_client", nullable = false)
 	private Client client;
-	@JoinColumn(name="id_chat")
 	@OneToOne
+	@JoinColumn(name="id_chat", nullable = false)
 	private Chat chat;
 	
 	

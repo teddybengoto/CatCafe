@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,10 +23,8 @@ public class Garde {
 	private LocalDate dateFin;
 	private double prix;
 	@ManyToOne
-	@JoinColumn(name="id_client")
 	private Client client;
 	@ManyToOne
-	@JoinColumn(name="id_chat")
 	private Chat chat;
 	
 	//-----------------Constructor----------------
@@ -57,10 +54,10 @@ public class Garde {
 		this.dateFin = dateFin;
 	}
 	public double getPrix() {
-		return prix;
+		return Prix;
 	}
 	public void setPrix(double prix) {
-		this.prix = prix;
+		Prix = prix;
 	}
 	public Client getClient() {
 		return client;
@@ -77,7 +74,7 @@ public class Garde {
 
 	@Override
 	public String toString() {
-		return "Garde [dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", Prix=" + prix + ", client=" + client
+		return "Garde [dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", Prix=" + Prix + ", client=" + client
 				+ ", chat=" + chat + "]";
 	}
 	
