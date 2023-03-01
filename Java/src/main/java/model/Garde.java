@@ -54,10 +54,10 @@ public class Garde {
 		this.dateFin = dateFin;
 	}
 	public double getPrix() {
-		return Prix;
+		return prix;
 	}
 	public void setPrix(double prix) {
-		Prix = prix;
+		prix = prix;
 	}
 	public Client getClient() {
 		return client;
@@ -74,7 +74,7 @@ public class Garde {
 
 	@Override
 	public String toString() {
-		return "Garde [dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", Prix=" + Prix + ", client=" + client
+		return "Garde [dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", Prix=" + prix + ", client=" + client
 				+ ", chat=" + chat + "]";
 	}
 	
