@@ -50,7 +50,7 @@ public class DAOAdoption implements IDAOAdoption{
 	public List<Adoption> findAllByClient(Integer idClient) {
 		
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Query ps = em.createQuery("from adoption g where g.Client.id=:idClient");
+		Query ps = em.createQuery("from Adoption g where g.client.id=:idClient");
 		ps.setParameter("idClient", idClient);
 		List<Adoption> adoptions =  ps.getResultList();
 		em.close();
@@ -60,7 +60,7 @@ public class DAOAdoption implements IDAOAdoption{
 	@Override
 	public List<Adoption> findAllByChat(Integer idChat) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Query ps = em.createQuery("from adoption g where g.Chat.id=:idChat");
+		Query ps = em.createQuery("from Adoption g where g.chat.id=:idChat");
 		ps.setParameter("idChat", idChat);
 		List<Adoption> adoptions =  ps.getResultList();
 		em.close();
