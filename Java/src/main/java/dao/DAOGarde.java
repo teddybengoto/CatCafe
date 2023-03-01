@@ -51,7 +51,7 @@ public class DAOGarde implements IDAOGarde{
 	public List<Garde> findAllByClient(Integer idClient) {
 		
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Query ps = em.createQuery("from Garde g where g.Client.id=:idClient");
+		Query ps = em.createQuery("from Garde g where g.client.id=:idClient");
 		ps.setParameter("idClient", idClient);
 		List<Garde> gardes =  ps.getResultList();
 		em.close();
@@ -61,7 +61,7 @@ public class DAOGarde implements IDAOGarde{
 	@Override
 	public List<Garde> findAllByChat(Integer idChat) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Query ps = em.createQuery("from Garde g where g.Chat.id=:idChat");
+		Query ps = em.createQuery("from Garde g where g.chat.id=:idChat");
 		ps.setParameter("idChat", idChat);
 		List<Garde> gardes =  ps.getResultList();
 		em.close();

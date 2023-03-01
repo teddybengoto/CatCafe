@@ -113,35 +113,34 @@ public class Test {
 	}
 
 	public static void testAdoption() {
-
-		//findby et delete marche pas
+		//tout marche !!
 		Client c1= (Client)Singleton.getInstance().getDaoCompte().findById(1);;
 		Chat adoptable = Singleton.getInstance().getDaoChat().findById(3);
 
 		Adoption ad1 = new Adoption(LocalDate.now(),100.0,"",c1,adoptable);
 
 		//System.out.println(Singleton.getInstance().getDaoAdoption().findAll());
-		//System.out.println(Singleton.getInstance().getDaoAdoption().findAllByChat(3));
-		//System.out.println(Singleton.getInstance().getDaoAdoption().findAllByClient(1));
+		System.out.println(Singleton.getInstance().getDaoAdoption().findAllByChat(3));
+		System.out.println(Singleton.getInstance().getDaoAdoption().findAllByClient(1));
 		//System.out.println(Singleton.getInstance().getDaoAdoption().save(ad1));
-		//System.out.println(Singleton.getInstance().getDaoAdoption().findById(2));
-		Singleton.getInstance().getDaoCompte().delete(2);
+		//System.out.println(Singleton.getInstance().getDaoAdoption().findById(1));
+		//Singleton.getInstance().getDaoAdoption().delete(2);
 		//System.out.println();
 	}
 
 	public static void testGarde() {
 		
-		//rein marche ?
+		//Tout marche
 		Client c1= (Client)Singleton.getInstance().getDaoCompte().findById(1);;
 		Chat adoptable = Singleton.getInstance().getDaoChat().findById(3);
-		Garde c2 = new Garde(LocalDate.now(),LocalDate.now(),100,c1,adoptable);
+		Garde c2 = new Garde(LocalDate.now(),LocalDate.now(),990,c1,adoptable);
 		
-		System.out.println(Singleton.getInstance().getDaoGarde().findAll());
-		//System.out.println(Singleton.getInstance().getDaoCompte().findAllByChat(3));
+		//System.out.println(Singleton.getInstance().getDaoGarde().findAll());
+		//System.out.println(Singleton.getInstance().getDaoGarde().findAllByChat(3));
 		//System.out.println(Singleton.getInstance().getDaoGarde().findAllByClient(1));
-		//System.out.println(Singleton.getInstance().ggetDaoGarde().save(c2));
-		System.out.println(Singleton.getInstance().getDaoGarde().findById(1));
-		//Singleton.getInstance().getDaoCompte().delete(2);
+		System.out.println(Singleton.getInstance().getDaoGarde().save(c2));
+		//System.out.println(Singleton.getInstance().getDaoGarde().findById(1));
+		Singleton.getInstance().getDaoGarde().delete(2);
 	}
 
 	public static void main(String[] args) {
