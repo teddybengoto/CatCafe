@@ -2,10 +2,12 @@ package dao;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import model.Chat;
 import model.Reservation;
 
-public interface IDAOReservation extends IDAO<Reservation,Integer> {
+public interface IDAOReservation extends JpaRepository<Reservation,Integer> {
 	
-	public List<Reservation> findAllByClient(Integer idClient);
+	public List<Reservation> findAllByClientId(Integer id);
 }

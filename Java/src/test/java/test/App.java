@@ -3,7 +3,7 @@ package test;
 
 import java.util.Scanner;
 
-import context.Singleton;
+/*import context.Singleton;
 import dao.IDAOAdoption;
 import dao.IDAOChat;
 import dao.IDAOCompte;
@@ -271,4 +271,4 @@ public class App {
 		 menuPrincipal();
 
 	}
-}
+}*/

@@ -2,13 +2,13 @@ package dao;
 
 import java.util.List;
 
-import model.Chat;
-import model.Garde;
-import model.Reservation;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IDAOGarde extends IDAO<Garde,Integer>{
+import model.Garde;
+
+public interface IDAOGarde extends JpaRepository<Garde,Integer>{
 	
-	public List<Garde> findAllByClient(Integer idClient);
-	public List<Garde> findAllByChat(Integer idGarde);
+	public List<Garde> findAllByClientId(Integer id);
+	public List<Garde> findAllByChatId(Integer id);
 
 }
