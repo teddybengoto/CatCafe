@@ -1,0 +1,177 @@
+@font-face
+{
+  font-family : "Abel";
+  src : url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family:"Abel";
+}
+
+header {
+    background-color: black;
+}
+
+
+nav {
+    width: 80%;
+}
+
+.my-Nav {
+    background-color: black !important;
+    border-bottom: solid white 1.5px;
+
+
+
+}
+
+a {
+    color: white !important;
+}
+
+.menu-icon,
+span {
+    color: white !important;
+    border-bottom: solid white 1.5px;
+
+
+}
+
+.my-bt {
+    color: white;
+
+}
+
+#aboutUs {
+    background-image: url("../assiste/img/imgCat1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    height: 801px;
+}
+
+#aboutUsLogoArray {
+
+    margin-top: 10rem!important;
+    color: #FFFFFF;
+    background-image: url("../assiste/img/line.png");
+
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Abel';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 50px;
+    text-align: right;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+#aboutUsLogoArray>p {
+    font-size: 36px;
+}
+
+#aboutUs>button {
+    margin-top: 30%;
+    margin-right: 20%;
+
+
+}
+
+#logo>img {
+    width: 110.26px;
+    height: 119.43px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transform: rotate(30deg);
+}
+
+#aboutUsDescriptionArray {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+}
+
+#aboutUsDescription {
+    font-size: 24px;
+    width: 70%;
+}
+
+h2 {
+    margin-bottom: 40px;
+    margin-right: 30%;
+    font-size: 64px;
+
+}
+
+#ourResidentArray {
+    background-image: url("../assiste/img/imgCat2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 801px;
+
+}
+
+#ourResidentArrayImage p {
+    font-size: 64px;
+    color: white;
+
+}
+
+#ourResidentArrayImage {
+
+}
+
+p>a{
+    color: black!important;
+}
+
+#residentImageArray{
+
+    height: 475px;
+    width: 70%;
+    background-color:#B9A88E ;
+}
+
+#resident_description >img{
+    position: relative;
+    z-index: -1;
+    bottom: 100px;
+}
+
+#adoption_img_array{
+    background-color: #B5986D;
+    height: 300px;
+}
+#adoption_img{
+    height: 80%!important;
+    object-fit: cover;
+}
+.w-45{
+    width: 45%;
+
+}
+
+#ours_spaces_img{
+    height: 760px ;
+    width: 75%;
+    background-image: url("../assiste/img/ourSpaces.png");
+
+}
+
+#ours_spaces_desc{
+    background-color: #B5986D;
+
+    height: 70%;
+    width: 50%;
+    margin-left: -15%;
+}
