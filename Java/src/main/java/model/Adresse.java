@@ -1,5 +1,8 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
@@ -7,12 +10,16 @@ import jakarta.persistence.Embeddable;
 public class Adresse {
 	
 	@Column(length = 10)
+	@JsonView(Views.Compte.class)
 	private String numero;
 	@Column(length=40)
+	@JsonView(Views.Compte.class)
 	private String voie;
 	@Column(length=50)
+	@JsonView(Views.Compte.class)
 	private String ville;
 	@Column(length=15)
+	@JsonView(Views.Compte.class)
 	private String cp;
 
 	public Adresse(String numero, String voie, String ville, String cp) {

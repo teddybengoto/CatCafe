@@ -2,6 +2,9 @@ package model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import api.Views;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -13,7 +16,9 @@ import jakarta.persistence.OneToMany;
 public class Client extends Compte {
 
 	@Embedded
+	@JsonView(Views.Compte.class)
 	private Adresse adresse;
+	@JsonView(Views.Compte.class)
 	private String telephone; 
 
 	@OneToMany(mappedBy = "client")
