@@ -8,6 +8,4 @@ public interface Views {
 
 	
 	public static interface Reservation extends Common{}
-	
-	
 }

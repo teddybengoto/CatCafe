@@ -9,5 +9,5 @@ import model.Reservation;
 
 public interface IDAOReservation extends JpaRepository<Reservation,Integer> {
 	
-	public List<Reservation> findAllByClientId(Integer id);
+	public List<Reservation> findAllByClientId(int clientId);
 }

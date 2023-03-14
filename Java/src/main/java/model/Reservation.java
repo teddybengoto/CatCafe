@@ -1,8 +1,10 @@
 package model;
 
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import api.Views;
@@ -34,18 +36,22 @@ public class Reservation {
     
     @Column(nullable=false)
     @JsonView(Views.Reservation.class)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate jour;
     
     @Column(nullable=false)
     @JsonView(Views.Reservation.class)
+    @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime heure;
     
     @ManyToOne
 	@JoinColumn(name="id_client",nullable = false)
+    @JsonView(Views.Reservation.class)
     private Client client;
     
     @Column(name="espace",columnDefinition = "ENUM('Jeu', 'Coworking', 'Chill', 'SalonDeThe')",nullable=false)
 	@Enumerated(EnumType.STRING)
+    @JsonView(Views.Reservation.class)
     private Espace espace;
 
 
