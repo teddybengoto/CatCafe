@@ -3,6 +3,9 @@ package model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,19 +29,23 @@ public class Chat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_chat")
+	@JsonView(Views.Common.class)
 	private Integer id;
 	
 	@Column(nullable=false)
+	@JsonView(Views.Chat.class)
 	private String nom;
 	
 	@Column(name="sexe",columnDefinition = "ENUM('male','femelle')",nullable=false)
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.Chat.class)
 	private Sexe sexe;
 	
 	@Column(name="race",columnDefinition = "ENUM('Europeen','Ragdoll','MainCoon','Persan',"
 			+ "'Sphynx','SacreDeBirmanie','BritishShorthair',"
 			+ "'Norvegien','Chartreux','Siamois','Abyssin','Bengal','Autre')",nullable=false)
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.Chat.class)
 	private Race race;
 	private boolean adoptable;
 	private String idPuce;
@@ -52,6 +59,7 @@ public class Chat {
 	
 	@ManyToOne
 	@JoinColumn(name="id_client")
+	@JsonView(Views.Chat.class)
 	private Client client;
 	
 	@OneToOne(mappedBy = "chat")
