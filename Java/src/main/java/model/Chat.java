@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import api.Views;
@@ -47,14 +48,28 @@ public class Chat {
 	@Enumerated(EnumType.STRING)
 	@JsonView(Views.Chat.class)
 	private Race race;
+	
+	@JsonView(Views.Chat.class)
 	private boolean adoptable;
-	private String idPuce;
-	private String idTatouage;
-	private LocalDate naissance;
-	private boolean sterile;  
-	private String pbSante;         
-	private String commentaire;
+	@JsonView(Views.Chat.class)
 	private boolean permanent;
+	@JsonView(Views.Chat.class)
+	private boolean sterile; 
+	
+	@JsonView(Views.Chat.class)
+	private String idPuce;
+	@JsonView(Views.Chat.class)
+	private String idTatouage;
+	
+	//@JsonView(Views.Chat.class)
+	//@JsonFormat(pattern = "dd/mm/yyyy")
+	private LocalDate naissance;
+	
+	@JsonView(Views.Chat.class)
+	private String pbSante;    
+	@JsonView(Views.Chat.class)
+	private String commentaire;
+	@JsonView(Views.Chat.class)
 	private String image;
 	
 	@ManyToOne
@@ -72,7 +87,7 @@ public class Chat {
 	
 	//---------------------------------Constructeur------------------------
 	
-	public Chat(String nom, Sexe sexe, Race race, LocalDate naissance,String commentaire) {
+	/*public Chat(String nom, Sexe sexe, Race race, LocalDate naissance,String commentaire) {
 		this.nom = nom;
 		this.sexe = sexe;
 		this.race = race;
@@ -94,7 +109,7 @@ public class Chat {
 		this.pbSante = pbSante;
 		this.commentaire = commentaire;
 		this.permanent = permanent;
-	}
+	}*/
 	
     public Chat() {}
 
