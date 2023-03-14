@@ -2,11 +2,16 @@ package model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -19,14 +24,25 @@ public class Garde {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_garde")
+	@JsonView(Views.Common.class)
 	private Integer id;
-	
+	@JsonView(Views.Garde.class)
+	@JsonFormat(pattern ="dd/MM/yyyy")
+	@Column(name="dateDebut", nullable = false)
 	private LocalDate dateDebut;
+	@JsonView(Views.Garde.class)
+	@JsonFormat(pattern ="dd/MM/yyyy")
+	@Column(name="dateFin", nullable = false)
 	private LocalDate dateFin;
+	@JsonView(Views.Garde.class)
 	private double prix;
 	@ManyToOne
+	@JoinColumn(name="client", nullable = false)
+	@JsonView(Views.Garde.class)
 	private Client client;
 	@ManyToOne
+	@JoinColumn(name="chat", nullable = false)
+	@JsonView(Views.Garde.class)
 	private Chat chat;
 	
 	//-----------------Constructor----------------
@@ -42,9 +58,17 @@ public class Garde {
 		this.client = client;
 		this.chat = chat;
 	}
+	//-----------------Constructor----------------
+	
 	
 	public LocalDate getDateDebut() {
 		return dateDebut;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
