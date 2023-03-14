@@ -6,4 +6,8 @@ public interface Views {
 	public static interface Chat extends Common{}
 	public static interface Compte extends Common{}
 
+	
+	public static interface Reservation extends Common{}
+	
+	
 }
