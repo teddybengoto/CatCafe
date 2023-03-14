@@ -75,18 +75,6 @@ public abstract class Compte {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	
-	
-
-
-	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 
 	public Integer getId() {

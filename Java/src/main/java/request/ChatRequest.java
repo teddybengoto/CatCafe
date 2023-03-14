@@ -1,5 +1,9 @@
 package request;
 
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.validation.constraints.NotBlank;
 import model.Race;
 import model.Sexe;
@@ -23,6 +27,9 @@ public class ChatRequest {
 	private String pbSante;         
 	private String commentaire;
 	private String image;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate naissance;
 	
 	private Integer clientId;
 	
@@ -122,6 +129,15 @@ public class ChatRequest {
 	public void setSterile(boolean sterile) {
 		this.sterile = sterile;
 	}
+
+	public LocalDate getNaissance() {
+		return naissance;
+	}
+
+	public void setNaissance(LocalDate naissance) {
+		this.naissance = naissance;
+	}
+	
 	
 	
 	

@@ -1,6 +1,7 @@
 package model;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import api.Views;
@@ -29,6 +30,8 @@ public class Adoption {
 	@JsonView(Views.Common.class)
 	private Integer id;
 	@Column(name="date_adoption")
+	@JsonView(Views.Adoption.class)
+    @JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate date;
 	@Column(name="prix_adoption", nullable = false, columnDefinition = "DECIMAL(5,2)")
 	@JsonView(Views.Adoption.class)
@@ -38,6 +41,7 @@ public class Adoption {
 	private String condition;
 	@ManyToOne
 	@JoinColumn(name="id_client", nullable = false)
+	@JsonView(Views.Adoption.class)
 	private Client client;
 	@OneToOne
 	@JoinColumn(name="id_chat", nullable = false)
