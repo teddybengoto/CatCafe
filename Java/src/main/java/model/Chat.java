@@ -61,8 +61,8 @@ public class Chat {
 	@JsonView(Views.Chat.class)
 	private String idTatouage;
 	
-	//@JsonView(Views.Chat.class)
-	//@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonView(Views.Chat.class)
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate naissance;
 	
 	@JsonView(Views.Chat.class)
@@ -74,7 +74,7 @@ public class Chat {
 	
 	@ManyToOne
 	@JoinColumn(name="id_client")
-	@JsonView(Views.Compte.class)
+	@JsonView(Views.Chat.class)
 	private Client client;
 	
 	@OneToOne(mappedBy = "chat")

@@ -29,7 +29,7 @@ public class Test {
 
 
 	public static void main(String[] args) {
-		
+		/*
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
 		IDAOAdoption daoAdoption = context.getBean(IDAOAdoption.class);
@@ -75,6 +75,6 @@ public class Test {
 
 
 		
-
+*/
 	}
 }

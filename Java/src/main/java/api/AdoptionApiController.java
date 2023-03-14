@@ -44,14 +44,22 @@ public class AdoptionApiController {
 	@GetMapping("/{id}")
 	@JsonView(Views.Adoption.class)
 	public Adoption findById(@PathVariable int id){
-		Optional<Adoption> optAdoption = this.daoAdoption.findById(id);
+		return this.daoAdoption.findById(id).orElseThrow(AdoptionNotFoundException::new);
+		/*
+		 * Optional<Adoption> optAdoption = this.daoAdoption.findById(id);
 
 		if( optAdoption.isPresent()) {
 			Adoption adoption = new Adoption();
 			BeanUtils.copyProperties(optAdoption.get(), adoption);
 			return adoption;
 		}
-		throw new AdoptionNotFoundException();
+		throw new AdoptionNotFoundException();*/
+	}
+	
+	@GetMapping("/by-client-id/{clientId}")
+	@JsonView(Views.Adoption.class)
+	public List<Adoption> findAllByClientId(@PathVariable int clientId){
+		return this.daoAdoption.findAllByClientId(clientId);
 	}
 
 	@PostMapping

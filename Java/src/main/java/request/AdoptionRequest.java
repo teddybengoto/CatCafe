@@ -1,9 +1,17 @@
 package request;
 
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class AdoptionRequest {
 	
 	private double prix;
 	private String condition;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate date;
+	
 	private int idChat;
 	
 	private int idClient;
@@ -34,6 +42,13 @@ public class AdoptionRequest {
 	public void setIdClient(int idClient) {
 		this.idClient = idClient;
 	}
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	
 	
 	
 	

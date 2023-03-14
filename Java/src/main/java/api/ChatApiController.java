@@ -42,19 +42,33 @@ public class ChatApiController {
 		return this.daoChat.findAll();
 	}
 	
+	@GetMapping("/adoptable")
+	@JsonView(Views.Chat.class)
+	public List<Chat> findAllAdoptable() {
+		return this.daoChat.findAllAdoptable();
+	}
+	
+	@GetMapping("/permanent")
+	@JsonView(Views.Chat.class)
+	public List<Chat> findAllPermanent() {
+		return this.daoChat.findAllPermanent();
+	}
+	
 	//----------FindById----------
 	@GetMapping("/{id}")
 	@JsonView(Views.Chat.class)
 	public Chat findById(@PathVariable int id){
-		Optional<Chat> optChat = this.daoChat.findById(id);
+		return this.daoChat.findById(id).orElseThrow(ChatNotFoundException::new);
 		
-		if( optChat.isPresent()) {
-			Chat chat = new Chat();
-			BeanUtils.copyProperties(optChat.get(), chat);
-			return chat;
-		}
-		throw new ChatNotFoundException();
 	}
+	
+	//
+	@GetMapping("/by-client-id/{clientId}")
+	@JsonView(Views.Chat.class)
+	public List<Chat> findAllByClientId(@PathVariable int clientId){
+		return this.daoChat.findAllByClientId(clientId);
+	}
+	
 	
 	//----------ADD----------
 	@PostMapping
