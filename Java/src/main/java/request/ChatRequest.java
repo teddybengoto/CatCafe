@@ -16,6 +16,8 @@ public class ChatRequest {
 	
 	private boolean adoptable;
 	private boolean permanent;
+	private boolean sterile;
+	
 	private String idPuce;
 	private String idTatouage;
 	private String pbSante;         
@@ -112,5 +114,15 @@ public class ChatRequest {
 	public void setClientId(Integer clientId) {
 		this.clientId = clientId;
 	}
+
+	public boolean isSterile() {
+		return sterile;
+	}
+
+	public void setSterile(boolean sterile) {
+		this.sterile = sterile;
+	}
+	
+	
 	
 }
