@@ -9,5 +9,7 @@ public interface Views {
 	
 	public static interface Reservation extends Common{}
 	
+	public static interface Adoption extends Common{}
+	
 	
 }

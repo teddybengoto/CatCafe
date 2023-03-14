@@ -1,6 +1,9 @@
 package model;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,18 +26,22 @@ public class Adoption {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_adoption")
+	@JsonView(Views.Common.class)
 	private Integer id;
 	@Column(name="date_adoption")
 	private LocalDate date;
 	@Column(name="prix_adoption", nullable = false, columnDefinition = "DECIMAL(5,2)")
+	@JsonView(Views.Adoption.class)
 	private double prix;
 	@Column(name="condition_adoption")
+	@JsonView(Views.Adoption.class)
 	private String condition;
 	@ManyToOne
 	@JoinColumn(name="id_client", nullable = false)
 	private Client client;
 	@OneToOne
 	@JoinColumn(name="id_chat", nullable = false)
+	@JsonView(Views.Adoption.class)
 	private Chat chat;
 	
 	
