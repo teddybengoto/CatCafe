@@ -1,8 +1,13 @@
 package model;
 
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -23,22 +28,30 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_reservation")
+	@JsonView(Views.Common.class)
 	private Integer id;
 	
+	@JsonView(Views.Reservation.class)
     private int effectif ;
     
     @Column(nullable=false)
+    @JsonView(Views.Reservation.class)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate jour;
     
     @Column(nullable=false)
+    @JsonView(Views.Reservation.class)
+    @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime heure;
     
     @ManyToOne
 	@JoinColumn(name="id_client",nullable = false)
+    @JsonView(Views.Reservation.class)
     private Client client;
     
     @Column(name="espace",columnDefinition = "ENUM('Jeu', 'Coworking', 'Chill', 'SalonDeThe')",nullable=false)
 	@Enumerated(EnumType.STRING)
+    @JsonView(Views.Reservation.class)
     private Espace espace;
 
 

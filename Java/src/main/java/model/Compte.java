@@ -1,14 +1,17 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
-import jakarta.persistence.Id;
 
 
 @Entity
@@ -18,6 +21,7 @@ import jakarta.persistence.Id;
 public abstract class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	protected Integer id;
 	@Column(length = 35,  nullable = false)
 	protected String login;
@@ -70,6 +74,18 @@ public abstract class Compte {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+	
+	
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 
