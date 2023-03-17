@@ -1,6 +1,7 @@
 package formationsopra.catCafe.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,6 @@ public interface IDAOCompte extends JpaRepository<Compte,Integer>{
 	public Admin findByIdAdmin(int id);
 	//@Query("select a from Admin a where a.id = ?1")
 	public Compte findByLoginAndPassword(String login,String password );
+	public Optional<Compte> findByLogin(String login);
+
 }

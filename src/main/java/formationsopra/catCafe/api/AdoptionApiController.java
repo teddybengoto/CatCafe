@@ -44,6 +44,7 @@ public class AdoptionApiController {
 	@GetMapping("/{id}")
 	@JsonView(Views.Adoption.class)
 	public Adoption findById(@PathVariable int id){
+		
 		return this.daoAdoption.findById(id).orElseThrow(AdoptionNotFoundException::new);
 		/*
 		 * Optional<Adoption> optAdoption = this.daoAdoption.findById(id);

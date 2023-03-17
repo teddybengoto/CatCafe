@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import formationsopra.catCafe.config.jwt.JwtUtil;
 import formationsopra.catCafe.dao.IDAOCompte;
 import formationsopra.catCafe.exception.CompteBadRequestException;
 import formationsopra.catCafe.exception.CompteNotFoundException;
@@ -29,7 +32,11 @@ import formationsopra.catCafe.model.Compte;
 import formationsopra.catCafe.request.AdresseRequest;
 import formationsopra.catCafe.request.ClientRequest;
 import formationsopra.catCafe.request.LoginRequest;
+import formationsopra.catCafe.response.AuthResponse;
 import jakarta.validation.Valid;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+
 
 
 @RestController
@@ -38,14 +45,48 @@ public class CompteApiController {
 	
 	@Autowired
 	private IDAOCompte daoCompte;
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
+	@PostMapping("/connexion")
+	public AuthResponse connexion(@RequestBody LoginRequest lR) {
+		Authentication authentication = this.authenticationManager.authenticate(
+			new UsernamePasswordAuthenticationToken(lR.getLogin(), lR.getPassword())
+		);
+		
+		// Si on arrive ici, c'est que la connexion a fonctionnée
+		// On pourra mettre en place des mécaniques, comme par exemple, la génération d'un jeton de connexion ...
+		
+		return new AuthResponse(
+			true, // success
+			JwtUtil.generate(authentication) // jeton
+		);
+	}
+
+	/*@PostMapping("/inscription")
+	public Compte inscription(@RequestBody @Valid ClientRequest userRequest) {
+		Compte compte = new Compte();
+		
+//		BeanUtils.copyProperties(userRequest, utilisateur);
+		compte.setLogin(userRequest.getUsername());
+		
+		// Attention, il faut penser à encoder le mot de passe !
+		utilisateur.setPassword(this.passwordEncoder.encode(userRequest.getPassword()));
+		
+		return this.daoUtilisateur.save(utilisateur);
+	}*/
 	
+ /*
 	@PostMapping("/login")
 	@JsonView(Views.Compte.class)
 	public Compte login(@RequestBody LoginRequest lR) {			
 
 		return this.daoCompte.findByLoginAndPassword(lR.getLogin(), lR.getPassword());
-	}
+	}*/
 	
 	@GetMapping("/admin")
 	@JsonView(Views.Compte.class)
@@ -82,6 +123,8 @@ public class CompteApiController {
 		
 		Admin a = new Admin();
 		BeanUtils.copyProperties(cR, a);
+		a.setPassword(this.passwordEncoder.encode(a.getPassword()));
+
 		
 		
 		return this.daoCompte.save(a);
@@ -98,6 +141,8 @@ public class CompteApiController {
 		
 		Client c = new Client();
 		BeanUtils.copyProperties(cR, c);
+		c.setPassword(this.passwordEncoder.encode(c.getPassword()));
+
 		
 		return this.daoCompte.save(c);
 	}
