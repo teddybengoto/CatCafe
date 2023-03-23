@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import jakarta.validation.Valid;
 import formationsopra.catCafe.model.Client;
 import formationsopra.catCafe.model.Reservation;
 import formationsopra.catCafe.request.ReservationRequest;
+import formationsopra.catCafe.config.AccessAutorisation;
 
 @RestController
 @RequestMapping("/api/reservation")
@@ -32,6 +34,9 @@ public class ReservationApiController {
 	
 	@Autowired
 	private IDAOReservation daoReservation;
+
+	
+	private AccessAutorisation accessAutorisation = new AccessAutorisation();
 	
 	@GetMapping
 	@JsonView(Views.Reservation.class)
@@ -42,7 +47,14 @@ public class ReservationApiController {
 	@GetMapping("/{id}")
 	@JsonView(Views.Reservation.class)
 	public Reservation findById(@PathVariable int id) {
-		return this.daoReservation.findById(id).orElseThrow(ReservationNotFoundException::new);
+
+		Reservation resevation = this.daoReservation.findById(id).orElseThrow(ReservationNotFoundException::new);
+
+		if (accessAutorisation.isAllowed(resevation.getClient().getId().toString())) {
+			return resevation;
+		}
+			throw new ReservationBadRequestException();
+		
 	}
 	
 	

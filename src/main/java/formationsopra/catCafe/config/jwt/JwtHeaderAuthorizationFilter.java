@@ -64,7 +64,7 @@ public class JwtHeaderAuthorizationFilter extends OncePerRequestFilter {
 				}
 				
 				// Création d'une nouvelle Authentication Spring
-				Authentication authentication = new UsernamePasswordAuthenticationToken(login, null, authorities);
+				Authentication authentication = new UsernamePasswordAuthenticationToken(login, optUtilisateur.get().getId(), authorities);
 				
 				// Pour la redonner à Spring Security Context
 				SecurityContextHolder.getContext().setAuthentication(authentication);
