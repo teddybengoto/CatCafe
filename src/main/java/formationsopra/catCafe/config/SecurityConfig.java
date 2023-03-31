@@ -40,8 +40,8 @@ public class SecurityConfig {
 			// authorize.requestMatchers("/api/**").hasRole("ADMIN");
 
 			// On sera plus générique ici grâce à PrePost = true
-			authorize.requestMatchers("/api/compte/**").permitAll();
-			authorize.requestMatchers("/api/**").authenticated();
+			authorize.requestMatchers("/api/**").permitAll();
+			authorize.requestMatchers("/api/admin/**").authenticated();
 		});
 
 		// Par défaut, Spring Security active la protection contre les attaques CSRF

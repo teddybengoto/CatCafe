@@ -35,8 +35,8 @@ public class ReservationApiController {
 	@Autowired
 	private IDAOReservation daoReservation;
 
-	
-	private AccessAutorisation accessAutorisation = new AccessAutorisation();
+	@Autowired
+	private AccessAutorisation accessAutorisation;
 	
 	@GetMapping
 	@JsonView(Views.Reservation.class)
