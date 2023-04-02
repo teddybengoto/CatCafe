@@ -7,8 +7,10 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +43,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 
 @RestController
 @RequestMapping("/api/compte")
+@CrossOrigin("*")
 public class CompteApiController {
 	
 	@Autowired
@@ -57,13 +60,17 @@ public class CompteApiController {
 		Authentication authentication = this.authenticationManager.authenticate(
 			new UsernamePasswordAuthenticationToken(lR.getLogin(), lR.getPassword())
 		);
+
 		
 		// Si on arrive ici, c'est que la connexion a fonctionnée
 		// On pourra mettre en place des mécaniques, comme par exemple, la génération d'un jeton de connexion ...
-		
+
+		System.out.println("SecurityContextHolder.getContext().getAuthentication().getCredentials(): "+SecurityContextHolder.getContext().getAuthentication().getCredentials());
 		return new AuthResponse(
 			true, // success
-			JwtUtil.generate(authentication) // jeton
+			JwtUtil.generate(authentication), // jeton
+			this.daoCompte.findByLogin(lR.getLogin()).get().getId() // get user Id
+
 		);
 	}
 
