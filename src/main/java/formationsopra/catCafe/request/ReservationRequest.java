@@ -17,7 +17,7 @@ public class ReservationRequest {
 	
 	private Espace espace;
 	
-	@JsonFormat(pattern = "HH:mm:ss")
+	@JsonFormat(pattern = "HH:mm")
 	private LocalTime heure;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate jour;
