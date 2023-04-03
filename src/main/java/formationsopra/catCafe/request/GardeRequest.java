@@ -11,9 +11,9 @@ import formationsopra.catCafe.model.Client;
 
 public class GardeRequest {
 
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateDebut;
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateFin;
 	private double prix;
 	private int clientId;
