@@ -36,12 +36,12 @@ public class Reservation {
     
     @Column(nullable=false)
     @JsonView(Views.Reservation.class)
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate jour;
     
     @Column(nullable=false)
     @JsonView(Views.Reservation.class)
-    @JsonFormat(pattern = "HH:mm:ss")
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime heure;
     
     @ManyToOne
