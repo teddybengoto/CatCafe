@@ -31,7 +31,7 @@ public class Adoption {
 	private Integer id;
 	@Column(name="date_adoption")
 	@JsonView(Views.Adoption.class)
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	@Column(name="prix_adoption", nullable = false, columnDefinition = "DECIMAL(5,2)")
 	@JsonView(Views.Adoption.class)
