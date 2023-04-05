@@ -33,6 +33,7 @@ import formationsopra.catCafe.model.Client;
 import formationsopra.catCafe.model.Compte;
 import formationsopra.catCafe.request.AdresseRequest;
 import formationsopra.catCafe.request.ClientRequest;
+import formationsopra.catCafe.request.ClientUpdateRequest;
 import formationsopra.catCafe.request.LoginRequest;
 import formationsopra.catCafe.response.AuthResponse;
 import jakarta.validation.Valid;
@@ -156,9 +157,10 @@ public class CompteApiController {
 
 	@PutMapping("/client/{id}")
 	@JsonView(Views.Compte.class)
-	public Compte edit(@PathVariable int id, @Valid @RequestBody ClientRequest cR, BindingResult result) {
+	public Compte edit(@PathVariable int id, @Valid @RequestBody ClientUpdateRequest cR, BindingResult result) {
 		
 		if (result.hasErrors()) {
+			System.out.println("error: "+ result.getAllErrors());
 			throw new CompteBadRequestException();
 		}
 		
