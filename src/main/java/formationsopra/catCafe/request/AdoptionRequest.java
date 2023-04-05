@@ -9,7 +9,7 @@ public class AdoptionRequest {
 	private double prix;
 	private String condition;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate date;
 	
 	private int idChat;
