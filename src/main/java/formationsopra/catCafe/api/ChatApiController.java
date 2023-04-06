@@ -53,8 +53,8 @@ public class ChatApiController {
 	private IDAOChat daoChat;
     	//private String imageLocation = "../../../assets/img/api/chat";
     	//private String imageFrontLocation = "../../../assets/img/api/chat/";
-    	private String imageLocation = "C:/Users/jorda/assets/img/api/chat";
-    	private String imageFrontLocation = "C:/Users/jorda/assets/img/api/chat/";
+    	private String imageLocation = "C:/Users/jorda/Desktop/Projet/catCafeFront/src/assets/img/api/chat";
+    	private String imageFrontLocation = "../../../assets/img/api/chat/";
 
 
 
@@ -170,6 +170,7 @@ public class ChatApiController {
 		saveImage.saveFile(imageLocation, (id+"."+extension), multipartFile);
 
 		Chat c = this.daoChat.findById(id).orElseThrow(ChatNotFoundException::new);
+		System.out.println(imageFrontLocation);
 		c.setImage(imageFrontLocation + id +"."+ extension);
 
 		return this.daoChat.save(c);

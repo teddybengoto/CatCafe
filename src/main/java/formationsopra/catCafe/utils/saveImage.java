@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class saveImage {
 
-    private String imageLocation = "../../catcafefront/public/img/chat/";
+    //private String imageLocation = "../../catcafefront/public/img/chat/";
 
     public static void saveFile(String uploadDir, String fileName, MultipartFile multipartFile) throws IOException {
         Path uploadPath = Paths.get(uploadDir);
