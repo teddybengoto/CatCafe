@@ -27,10 +27,10 @@ public class ChatRequest {
 	private String commentaire;
 	private String image;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate naissance;
 	
-	private Integer clientId;
+	private int clientId;
 	
 	//-------------GETTER SETTER-------------
 	public String getNom() {
@@ -113,11 +113,11 @@ public class ChatRequest {
 		this.image = image;
 	}
 
-	public Integer getClientId() {
+	public int getClientId() {
 		return clientId;
 	}
 
-	public void setClientId(Integer clientId) {
+	public void setClientId(int clientId) {
 		this.clientId = clientId;
 	}
 
