@@ -62,7 +62,7 @@ public class Chat {
 	private String idTatouage;
 	
 	@JsonView(Views.Chat.class)
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate naissance;
 	
 	@JsonView(Views.Chat.class)

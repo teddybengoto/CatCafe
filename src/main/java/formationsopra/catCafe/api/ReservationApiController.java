@@ -50,11 +50,11 @@ public class ReservationApiController {
 	public Reservation findById(@PathVariable int id) {
 
 		Reservation resevation = this.daoReservation.findById(id).orElseThrow(ReservationNotFoundException::new);
-
-		if (accessAutorisation.isAllowed(resevation.getClient().getId().toString())) {
-			return resevation;
-		}
-			throw new ReservationBadRequestException();
+		return resevation;
+		//if (accessAutorisation.isAllowed(resevation.getClient().getId().toString())) {
+		//	return resevation;
+		//}
+		//	throw new ReservationBadRequestException();
 		
 	}
 	
