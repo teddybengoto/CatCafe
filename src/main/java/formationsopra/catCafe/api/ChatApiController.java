@@ -51,7 +51,7 @@ public class ChatApiController {
 
 	@Autowired
 	private IDAOChat daoChat;
-    	private String imageLocation = "../../catcafefront/src/assets/img/api/chat";
+    	private String imageLocation = "../../../assets/img/api/chat";
     	private String imageFrontLocation = "../../../assets/img/api/chat/";
 
 
