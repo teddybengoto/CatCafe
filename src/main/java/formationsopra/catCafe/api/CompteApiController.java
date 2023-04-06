@@ -55,7 +55,7 @@ public class CompteApiController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+		
 	@PostMapping("/connexion")
 	public AuthResponse connexion(@RequestBody LoginRequest lR) {
 		Authentication authentication = this.authenticationManager.authenticate(

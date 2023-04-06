@@ -13,6 +13,8 @@ public class ClientUpdateRequest {
 	private String nom; 
 	@NotBlank(message = "Le prenom doit être saisi")
 	private String prenom; 
+	@NotBlank(message = "Le telephone doit être saisi")
+	private String telephone; 
 	
 	
 	//protected String password;
@@ -25,6 +27,17 @@ public class ClientUpdateRequest {
 	public void setLogin(String login) {
 		this.login = login;
 	}
+
+
+	public String getTelephone() {
+		return this.telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	
+
 	public String getNom() {
 		return nom;
 	}
