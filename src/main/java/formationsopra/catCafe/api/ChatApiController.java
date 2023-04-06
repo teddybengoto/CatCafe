@@ -51,8 +51,11 @@ public class ChatApiController {
 
 	@Autowired
 	private IDAOChat daoChat;
-    	private String imageLocation = "../../../assets/img/api/chat";
-    	private String imageFrontLocation = "../../../assets/img/api/chat/";
+    	//private String imageLocation = "../../../assets/img/api/chat";
+    	//private String imageFrontLocation = "../../../assets/img/api/chat/";
+    	private String imageLocation = "C:/Users/jorda/assets/img/api/chat";
+    	private String imageFrontLocation = "C:/Users/jorda/assets/img/api/chat/";
+
 
 
 	// ----------FindAll----------
