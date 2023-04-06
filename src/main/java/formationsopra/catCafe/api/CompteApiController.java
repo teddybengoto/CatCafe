@@ -1,6 +1,7 @@
 package formationsopra.catCafe.api;
 
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.fasterxml.jackson.annotation.JsonView;
 
 import formationsopra.catCafe.config.jwt.JwtUtil;
@@ -40,7 +40,7 @@ import jakarta.validation.Valid;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-
+//import org.apache.commons.io;
 
 @RestController
 @RequestMapping("/api/compte")
@@ -55,6 +55,7 @@ public class CompteApiController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
 		
 	@PostMapping("/connexion")
 	public AuthResponse connexion(@RequestBody LoginRequest lR) {
@@ -155,15 +156,16 @@ public class CompteApiController {
 		return this.daoCompte.save(c);
 	}
 
+
 	@PutMapping("/client/{id}")
 	@JsonView(Views.Compte.class)
-	public Compte edit(@PathVariable int id, @Valid @RequestBody ClientUpdateRequest cR, BindingResult result) {
+	public Compte edit(@PathVariable int id, @Valid @RequestBody ClientUpdateRequest cR, BindingResult result ) {
 		
 		if (result.hasErrors()) {
 			System.out.println("error: "+ result.getAllErrors());
 			throw new CompteBadRequestException();
 		}
-		
+
 				
 		Compte c = this.daoCompte.findById(id).orElseThrow(CompteNotFoundException::new);
 		BeanUtils.copyProperties(cR, c);
